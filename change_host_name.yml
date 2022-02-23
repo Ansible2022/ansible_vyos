@@ -1,8 +1,8 @@
 ---
-- hosts: vyatta_routers
+- hosts: vyos_router
   vars:
-   - ansible_user: vyatta
-   - ansible_ssh_pass: 102478
+   - ansible_user: vyos
+   - ansible_ssh_pass: 131296
    - ansible_network_os: vyos
    - ansible_connection: network_cli
 
