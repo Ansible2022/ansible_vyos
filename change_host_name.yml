@@ -1,0 +1,14 @@
+---
+- hosts: vyatta_routers
+  vars:
+   - ansible_user: vyatta
+   - ansible_ssh_pass: 102478
+   - ansible_network_os: vyos
+   - ansible_connection: network_cli
+
+  tasks:
+   - name: Change Host Name
+     vyos_config:
+      lines:
+       - set system host-name R1
+       

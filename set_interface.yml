@@ -1,0 +1,49 @@
+---
+- name: "Set Interface..."
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: "Set Interface in R1"
+      vyos_config:
+        lines:
+         - set interfaces ethernet eth0 address dhcp
+         - set interfaces ethernet eth0 description INTERNET
+         - set interfaces ethernet eth1 address 192.168.10.254/24
+         - set interfaces ethernet eth1 description R1WEST
+         - set interfaces ethernet eth2 address 10.0.0.1/30
+         - set interfaces ethernet eth2 description R1R2
+         - set interfaces ethernet eth3 address 10.0.0.10/30
+         - set interfaces ethernet eth3 description R1R3
+      when: inventory_hostname== "r1"
+
+    - name: "Set Interface in R2"
+      vyos_config:
+        lines:
+         - set interfaces ethernet eth0 address 10.0.0.2/30
+         - set interfaces ethernet eth0 description R1R2
+         - set interfaces ethernet eth1 address 192.168.20.254/24
+         - set interfaces ethernet eth1 description R2WEST
+         - set interfaces ethernet eth2 address 192.168.30.254/24
+         - set interfaces ethernet eth2 description R2SOUTH
+         - set interfaces ethernet eth3 address 10.0.0.5/30
+         - set interfaces ethernet eth3 description R2R3
+      when: inventory_hostname== "r2"
+
+    - name: "Set Interface in R3"
+      vyos_config:
+        lines:
+         - set interfaces ethernet eth0 address 10.0.0.9/30
+         - set interfaces ethernet eth0 description R1R3
+         - set interfaces ethernet eth1 address 10.0.0.6/30
+         - set interfaces ethernet eth1 description R2R3
+         - set interfaces ethernet eth2 address 192.168.40.254/24
+         - set interfaces ethernet eth2 description R3SOUTH
+         - set interfaces ethernet eth3 address 192.168.50.254/24
+         - set interfaces ethernet eth3 description R3EAST
+      when: inventory_hostname== "r3"
+
+
+
+
+

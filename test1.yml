@@ -1,0 +1,26 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+   - name: Run R1
+     debug:
+       msg: "host name : {{ inventory_hostname }}"
+     when: inventory_hostname== "r1"
+   
+   - name: Run R2
+     debug:
+       msg: "host name : {{ inventory_hostname }}"
+     when: inventory_hostname== "r2"
+
+   - name: Run R3
+     debug:
+       msg: "host name : {{ inventory_hostname }}"
+     when: inventory_hostname== "r3"
+
+     #- name: Show interface
+     #vyos_command:
+       #commands:
+         #- show interface
+
+
