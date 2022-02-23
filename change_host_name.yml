@@ -1,5 +1,5 @@
 ---
-- hosts: vyos_router
+- hosts: all
   vars:
    - ansible_user: vyos
    - ansible_ssh_pass: 131296
