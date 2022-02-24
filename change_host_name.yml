@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: "{{ target_host }}"
   vars:
    - ansible_network_os: vyos
    - ansible_connection: network_cli
@@ -8,5 +8,5 @@
    - name: Change Host Name
      vyos_config:
       lines:
-       - set system host-name {{change_hostname}}
+       - set system host-name {{ change_hostname }}
        
