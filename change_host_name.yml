@@ -1,8 +1,6 @@
 ---
 - hosts: all
   vars:
-   - ansible_user: vyos
-   - ansible_ssh_pass: 131296
    - ansible_network_os: vyos
    - ansible_connection: network_cli
 
